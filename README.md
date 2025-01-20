@@ -22,14 +22,9 @@ This project demonstrates the usage of various pytest plugins and includes a sim
 To set up this project, follow these steps:
 
 1. Clone the repository
-2. Create a virtual environment:
+2. Install the required dependencies:
    ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-   ```
-3. Install the required dependencies:
-   ```
-   pip install -r requirements.txt
+   uv sync
    ```
 
 ## Features
@@ -49,7 +44,7 @@ The project demonstrates the usage of various pytest plugins:
 To run the tests and see the plugins in action, use:
 
 ```
-pytest
+uv run pytest --xdoctest --cov -n auto
 ```
 
 ## Testing
@@ -60,7 +55,3 @@ The `tests` directory contains test cases that demonstrate the usage of differen
 - `test_task_factory`: Demonstrates pytest-factoryboy for generating test data
 - `test_load_tasks_from_csv`: Uses pytest-datadir for loading test data from files
 - `test_task_comparison`: Showcases pytest-icdiff for improved assertion diffs
-
-## License
-
-[Include license information here]

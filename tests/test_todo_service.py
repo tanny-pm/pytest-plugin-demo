@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from src.pytest_plugin_demo.todo_service import Task, load_tasks_from_csv
 from tests.conftest import TaskFactory
 
@@ -26,13 +24,14 @@ def test_task_factory():
 def test_task_factory_2():
     for _ in range(100000):  # 時間のかかるテストの例
         task = TaskFactory()
+        print(f"task={task.task} \t comp={task.completed}")
         assert isinstance(task, Task)
         assert isinstance(task.completed, bool)
 
 
 # pytest-datadir データファイルの使用
-def test_load_tasks_from_csv(datadir):
-    csv_file = Path("tests/data/test_tasks.csv")  # 直接パスを指定
+def test_load_tasks_from_csv(shared_datadir):
+    csv_file = shared_datadir / "test_tasks.csv"
     tasks = load_tasks_from_csv(str(csv_file))
     assert len(tasks) == 2
 
